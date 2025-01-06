@@ -6,8 +6,9 @@
     "typescript": "^5.7.2"
   },
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon --watch src --exec 'npx ts-node' src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js"
   },
   "dependencies": {
     "express": "^4.21.2"
