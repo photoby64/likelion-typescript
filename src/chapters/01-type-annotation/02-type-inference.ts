@@ -14,9 +14,11 @@
 
   let empty: null;
 
-  let serialNumberOfPhone: string = "SDN-9do1Wed8Az";
+  let serialNumberOfPhone: string = 'SDN-9do1Wed8Az';
 
   let totalPrice: number = 972_000;
 
   let hasPhoneBeenReleased: boolean = false;
 }
+
+

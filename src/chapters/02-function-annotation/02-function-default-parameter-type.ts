@@ -18,6 +18,6 @@
   };
 
   // toName을 제외한 매개변수의 기본 값을 설정해 아래 오류가 발생하지 않도록 합니다.
-  sendGreeting('상우');
-  sendGreeting('제인');
+  sendGreeting('상우','종국',true,2025);
+  sendGreeting('제인','재휘',false,2024);
 }

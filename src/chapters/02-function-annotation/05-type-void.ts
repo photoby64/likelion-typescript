@@ -14,14 +14,15 @@
   function printTwice(message: string) {
     console.log(message);
     console.log(message);
-    return '';
+    return "";
   }
+  printTwice("hello");
 }
 
 {
   // 아래 오류가 발생한 이유는 명시적으로 반환 값의 타입이 void 임을 지정했기 때문입니다.
-  function printMessage(message: string): void {
+  function printMessage(message: string): string {
     console.log(message);
-    return '';
+    return "";
   }
 }

@@ -9,7 +9,7 @@
 // ---------------------------------------------------------------------------------
 
 {
-  /** js독??
+  /*
    * 난수를 반환하는 함수
    * ECMAScript(JavaScript) vs. TypeScript
    * @param n number
@@ -22,22 +22,24 @@
   }
 
   getRandom(101);
-  getRandom("101");
-  getRandom("one zero one");
+  // getRandom("101");
+  // getRandom("one zero one");
 
   /**
    * 최솟값, 최댓값 사이의 난수를 반환하는 함수
    * @param min number
    * @param max number
    */
-  function getRandomMinMax(min: number, max: number) {
-    min();
-    max.toLowerCase();
+  function getRandomMinMax(min: number, max: number):number {
+    // min();
+    // max.toLowerCase();
     return getRandom(max - min) + min;
   }
 
   getRandomMinMax(64, 22);
 }
+
+
 
 // ---------------------------------------------------------------------------------
 

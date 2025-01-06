@@ -8,13 +8,30 @@
 // Store 인터페이스의 getState, setState 메서드 타입을 지정해봅니다.
 
 {
+  // interface Store {
+  //   state: string[];
+  // }
+
+  // const namesStore: Store = {
+  //   state: ['박아름', '한성연', '최연희'],
+  //   getState: () => {
+  //     return this.state;
+  //   },
+  //   setState(newStateItem) {
+  //     this.state.push(newStateItem);
+  //   },
+  // };
+
   interface Store {
+    // state: Array<string>;
     state: string[];
+    getState(): string[];
+    
   }
 
   const namesStore: Store = {
     state: ['박아름', '한성연', '최연희'],
-    getState: () => {
+    getState() {
       return this.state;
     },
     setState(newStateItem) {
@@ -22,3 +39,7 @@
     },
   };
 }
+
+
+
+

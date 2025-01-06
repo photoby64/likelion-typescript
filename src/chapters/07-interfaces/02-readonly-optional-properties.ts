@@ -8,10 +8,20 @@
 // Person 인터페이스의 name 속성은 읽기 전용, gender 속성은 옵션으로 설정해봅니다.
 
 {
+  // interface Person {
+  //   name: string;
+  //   age: number;
+  //   gender: '남성' | '여성';
+  // }
+
+
+
+
+
   interface Person {
-    name: string;
+    readonly name: string;
     age: number;
-    gender: '남성' | '여성';
+    gender?: '남성' | '여성';
   }
 
   const sayHappyBirthDay = (person: Person): string => {
@@ -20,7 +30,7 @@
 
   const suyouen = { name: '이수연', age: 36 };
 
-  suyouen.name = '이수정';
+  // suyouen.name = '이수정';
 
-  console.log(sayHappyBirthDay(suyouen));
+  console.log(sayHappyBirthDay({ name: '이수연', age: 36 }));
 }

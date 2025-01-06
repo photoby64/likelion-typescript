@@ -7,13 +7,13 @@
 
 {
   type Point = {
-    x: number;
-    y: number;
-    z: number;
+    x: number; // 필수!
+    y: number; // 필수!
+    z?: number; // 선택 Optional 뒤에 물음표
   };
 
   const generatePoint = (x: number, y: number): Point => {
-    return { x, y };
+    return { x, y, z: 10 };
   };
 
   const calcPointValues = (point: Point) =>

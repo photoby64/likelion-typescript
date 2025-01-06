@@ -8,8 +8,8 @@
 
 {
   const jaeho = {
-    name: '재호',
-    gender: '남성',
+    name: "재호",
+    gender: "남성",
     isMarried: false,
     age: 24,
   };
@@ -24,22 +24,23 @@
     isMarried: boolean;
     age: number;
   } = /* 값(객체) */ {
-    name: '수연',
-    gender: '여성',
+    name: "수연",
+    gender: "여성",
     isMarried: true,
     age: 36,
   };
 }
 
 {
-  function getName(user): string {
+  function getName(user: { firstName: string; lastName: string }): string {
     return `${user.firstName} ${user.lastName}`;
   }
 
   // 아래 함수 실행 구문이 오류가 발생하지 않는 이유는 무엇일까요?
   // 오류가 발생하도록 getName 함수의 매개변수 에너테이션을 지정해봅니다.
   let userName = getName({
-    name: '하성연',
+    firstName: "하",
+    lastName: "성연",
   });
 
   console.log(userName);
@@ -61,7 +62,7 @@
     x: number = getRandomMinMax(-10, 10),
     y: number = getRandomMinMax(-10, 10),
     z: number = getRandomMinMax(-10, 10)
-  ) {
+  ): { x: number; y: number; z: number } {
     return { x, y, z };
   }
 }

@@ -41,5 +41,5 @@
   }
 
   // foundMovie();
-  foundMovie = 101;
+  foundMovie = '101';
 }
