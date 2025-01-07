@@ -17,7 +17,7 @@
     hasWheel: boolean;
   }
 
-  interface VerticalTypeMouse {
+  interface VerticalTypeMouse extends Mouse{
     x: number;
     y: number;
     hasWheel: boolean;

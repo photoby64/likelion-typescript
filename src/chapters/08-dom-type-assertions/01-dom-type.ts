@@ -9,10 +9,23 @@
 // TypeScript는 body가 다양한 타입인 점을 감안해 사용자에게 오류가 발생할 수 있음을 경고합니다.
 // body의 타입이 객체인지 여부에 따라 조건 처리되도록 구현하여 TypeScript가 오류를 표시하지 않도록 합니다.
 
-{
-  const body = document.querySelector('body');
 
-  body.addEventListener('click', (e) => {
-    console.log('clicked body element');
+// {
+//   const body = document.querySelector('body');
+
+//   body.addEventListener('click', (e) => {
+//     console.log('clicked body element');
+//   });
+// }
+
+
+
+
+{
+  const body = document.querySelector("body"); as HTMLBodyElement;
+  // body 변수 참조값이 눌이 아닌 경우에 아래 코드 실행
+  //if(body)
+  body.addEventListener("click", (e) => {
+    console.log("clicked body element");
   });
 }

@@ -8,11 +8,50 @@
 
 // 모든 인스턴스 프로퍼티를 명시적으로 public 접근 제어자로 설정합니다.
 
+// {
+//   class Player {
+//     readonly nickname: string;
+//     readonly role: string;
+//     score: number = 0;
+
+//     constructor(nickname: string, role: string) {
+//       this.nickname = nickname;
+//       this.role = role;
+//     }
+
+//     scoreUp(point: number): void {
+//       this.score += point;
+//     }
+
+//     scoreDown(point: number): void {
+//       this.score -= point;
+//     }
+//   }
+
+//   const yamoo9 = new Player('yamoo9', '멘토');
+
+//   yamoo9.scoreUp(20);
+//   console.log(yamoo9.score);
+
+//   yamoo9.scoreDown(12);
+//   console.log(yamoo9.score);
+// }
+
+
+
+
+
+
+
+
+
+
+
 {
   class Player {
-    readonly nickname: string;
-    readonly role: string;
-    score: number = 0;
+    public readonly nickname: string;
+    public readonly role: string;
+    public score: number = 0;
 
     constructor(nickname: string, role: string) {
       this.nickname = nickname;
@@ -31,6 +70,8 @@
   const yamoo9 = new Player('yamoo9', '멘토');
 
   yamoo9.scoreUp(20);
+  // 수정 가능!
+  yamoo9.score += 9;
   console.log(yamoo9.score);
 
   yamoo9.scoreDown(12);

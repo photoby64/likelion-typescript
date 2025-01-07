@@ -7,13 +7,52 @@
 
 // 단축 표기법을 사용해 모든 프로퍼티를 생성자의 매개변수로 재구성합니다.
 
+// {
+//   class Player {
+//     public readonly nickname: string;
+//     public readonly role: string;
+//     private score: number = 0;
+
+//     constructor(nickname: string, role: string) {
+//       this.nickname = nickname;
+//       this.role = role;
+//       this.boostScoreUp();
+//     }
+
+//     private boostScoreUp(): void {
+//       this.score += 100;
+//     }
+
+//     public scoreUp(point: number): void {
+//       this.score += point;
+//     }
+
+//     public scoreDown(point: number): void {
+//       this.score -= point;
+//     }
+//   }
+
+//   const yamoo9 = new Player('yamoo9', '멘토');
+
+//   yamoo9.boostScoreUp();
+//   console.log(yamoo9.score);
+// }
+
+
+
+
+
 {
   class Player {
-    public readonly nickname: string;
-    public readonly role: string;
+    // public readonly nickname: string;
+    // public readonly role: string;
     private score: number = 0;
 
-    constructor(nickname: string, role: string) {
+    constructor(
+      
+      public readonly nickname: string, 
+      public readonly role: string
+    ) {
       this.nickname = nickname;
       this.role = role;
       this.boostScoreUp();
@@ -34,6 +73,6 @@
 
   const yamoo9 = new Player('yamoo9', '멘토');
 
-  yamoo9.boostScoreUp();
-  console.log(yamoo9.score);
+  // yamoo9.boostScoreUp();
+  // console.log(yamoo9.score);
 }

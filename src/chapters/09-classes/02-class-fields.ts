@@ -8,22 +8,52 @@
 // 클래스 필드 구문을 사용해 score 타입과 초깃값을 지정하고,
 // scoreUp, scoreDown 인스턴스 메서드도 정의한 후 타입 에너테이션을 설정합니다.
 
-{
-  class Player {
-    nickname: string;
-    role: string;
+// {
+//   class Player {
+//     nickname: string;
+//     role: string;
 
-    constructor(nickname: string, role: string) {
-      this.nickname = nickname;
-      this.role = role;
-    }
+//     constructor(nickname: string, role: string) {
+//       this.nickname = nickname;
+//       this.role = role;
+//     }
+//   }
+
+//   const yamoo9 = new Player('yamoo9', '멘토');
+
+//   yamoo9.scoreUp(20);
+//   console.log(yamoo9.score);
+
+//   yamoo9.scoreDown(12);
+//   console.log(yamoo9.score);
+// }
+
+
+
+class Player {
+  nickname: string;
+  role: string;
+  score: number;
+
+  constructor(nickname: string, role: string, score: number) {
+    this.nickname = nickname;
+    this.role = role;
+    this.score = score;
   }
 
-  const yamoo9 = new Player('yamoo9', '멘토');
+  scoreUp(point: number): void {
+    this.score += point;
+  }
 
-  yamoo9.scoreUp(20);
-  console.log(yamoo9.score);
-
-  yamoo9.scoreDown(12);
-  console.log(yamoo9.score);
+  scoreDown(point: number): void {
+    this.score -= point;
+  }
 }
+
+const yamoo9 = new Player('yamoo9', '멘토', 10);
+
+yamoo9.scoreUp(20);
+console.log(yamoo9.score);
+
+yamoo9.scoreDown(12);
+console.log(yamoo9.score);

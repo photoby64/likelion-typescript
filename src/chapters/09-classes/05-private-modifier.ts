@@ -8,11 +8,46 @@
 // score 인스턴스 프로퍼티를 외부에서 접근할 수 없도록 설정합니다.
 // boostScoreUp 인스턴스 프로퍼티를 외부에서 접근할 수 없도록 설정합니다.
 
+// {
+//   class Player {
+//     public readonly nickname: string;
+//     public readonly role: string;
+//     public score: number = 0;
+
+//     constructor(nickname: string, role: string) {
+//       this.nickname = nickname;
+//       this.role = role;
+//       this.boostScoreUp();
+//     }
+
+//     public boostScoreUp(): void {
+//       this.score += 100;
+//     }
+
+//     public scoreUp(point: number): void {
+//       this.score += point;
+//     }
+
+//     public scoreDown(point: number): void {
+//       this.score -= point;
+//     }
+//   }
+
+//   const yamoo9 = new Player('yamoo9', '멘토');
+
+//   yamoo9.boostScoreUp();
+//   console.log(yamoo9.score);
+// }
+
+
+
+
+
 {
   class Player {
     public readonly nickname: string;
     public readonly role: string;
-    public score: number = 0;
+    private score: number = 0;
 
     constructor(nickname: string, role: string) {
       this.nickname = nickname;
@@ -35,6 +70,6 @@
 
   const yamoo9 = new Player('yamoo9', '멘토');
 
-  yamoo9.boostScoreUp();
-  console.log(yamoo9.score);
+  // yamoo9.boostScoreUp();
+  // console.log(yamoo9.score);
 }
