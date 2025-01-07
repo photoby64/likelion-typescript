@@ -2,10 +2,10 @@
 /* Node.js JavaScript 실행 환경(Runtime Environment)                            */
 /* -------------------------------------------------------------------------- */
 
-// CommonJS 진영 모듈 호출 방식
+// CommonJS 진영 모듈 호출 방식 (default)
 // const http = require('node:http')
 
-// ESM 표준 모듈 호출 방식
+// ESM 표준 모듈 호출 방식 (package.json ->)
 import http from "node:http";
 
 // http://localhost:4000
@@ -28,7 +28,7 @@ const server = http.createServer((request /* 요청 */, response /* 응답 */) =
         <meta name="viewport" content="width: device-width, initial-scale=1.0" />
       </head>
       <body>
-        <h1>타입스크립트 에센셜</h1>
+        <h1>타입스크립트 ts 에센셜</h1>
       </body>
     </html>
     `);

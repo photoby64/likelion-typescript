@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------
-// 📌 instanceof 연산자 타입 범위 축소 (instanceof operator narrowing)
+// 📌 instanceof 연산자 타입 범위 축소 (instanceof operator narrowing) ✅
 // ⭐️ URL : https://bit.ly/3g5zsOP
 // --------------------------------------------------------------------------
 // - JavaScript 언어의 instanceof 연산자는 데이터가 특정 클래스의 인스턴스인지 확인합니다.
@@ -9,8 +9,11 @@
 {
   // date 타입 중 Date 클래스의 인스턴스 여부를 판별하도록 타입 범위를 축소합니다.
   const printFullDate = (date: string | Date) => {
+    if (typeof date === 'string'){
+      return new Date(date).toLocaleString();
+
+    }
     return date.toLocaleString();
-    return new Date(date).toLocaleString();
   };
 
   printFullDate(new Date());
@@ -33,8 +36,12 @@
 
   // entity 타입이 어떤 클래스의 인스턴스인지 여부를 판별할 수 있도록 타입 범위를 축소합니다.
   function printName(entity: Employee | Company) {
+    if( entity instanceof Employee ){
+      return entity.fullname;
+
+    }
+
     return entity.name;
-    return entity.fullname;
   }
 
   printName(new Employee('cikd3zlwj@9', 'yamoo9'));

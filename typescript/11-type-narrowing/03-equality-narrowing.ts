@@ -6,6 +6,12 @@
 // - 두 값을 서로 비교해 검사하면 두 값이 동일한 지 확인 후 작업을 처리합니다.
 // --------------------------------------------------------------------------
 
+
+
+
+
+
+
 {
   function isEqualityValue(
     value1: string | number,
@@ -28,3 +34,30 @@
   isEqualityValue(101, '101');
   isEqualityValue('EQUALITY', 'EQUALITY');
 }
+
+
+
+
+
+// {
+//   function isEqualityValue(
+//     value1: string | number,
+//     value2: string | boolean
+//   ): boolean {
+//     if (value1 == value2) {
+//       // value1, value2 모두 string 타입
+//       console.log(value1.toLowerCase());
+//       console.log(value2.toLowerCase());
+//       return true;
+//     } else {
+//       // value1은 string 또는 number 타입
+//       // value2는 string 또는 boolean 타입
+//       console.log(value1);
+//       console.log(value2);
+//       return false;
+//     }
+//   }
+
+//   isEqualityValue(101, '101');
+//   isEqualityValue('EQUALITY', 'EQUALITY');
+// }
