@@ -19,7 +19,13 @@
   {
     "id": 4,
     "name": "안노연",
-    "gender": "남성",
+    "gender": "nonBinary",
     "age": 36
+  },
+  {
+    "id": 1,
+    "name": "한현희",
+    "gender": "여성",
+    "age": 30
   }
 ]

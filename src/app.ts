@@ -20,9 +20,9 @@
 // ✅ Users 데이터 파일 읽기/쓰기 유틸리티 함수 작성 / 요청, 응답 처리
 // ✅ 동적 파라미터를 요청받아 서버에서 클라이언트로 응답 처리 과정
 // ✅ usersRouter 분리
-// ✅ usersRouter 분리 (유지 관리 용이) Part 1.
-// ✅ 
-// ✅ 
+// ✅ usersRouter 분리 (유지 관리 용이)
+// ✅ 삭제(DELETE) API 구성
+// 
 // --------------------------------------------------------------------------
 
 
@@ -36,6 +36,7 @@ import { resolve } from 'node:path';
 import express from 'express';
 import type { Express } from 'express';
 import usersRouter from './routes/users';
+import { readUsers, writeUsers } from './lib/users';
 
 
 // import { Request, response } from 'express';
@@ -265,6 +266,35 @@ app.use('/api/users', usersRouter);
 // DELETE ---------------------------------------------------------------------
 
 // `DELETE /api/users/:id`
+
+// export const deleteUserHandler = async (
+//   request: Request,
+//   response: Response
+// ) => {
+//   // REQUEST
+//   const { id } = request.params;
+
+//   // READ
+//   const users = await readUsers();
+
+//   // find user
+//   const user = users.find((user)=> user.id === Number(id));
+
+//   if (user){
+
+//     // WRITE
+//     // RESPONSE
+//     user.filter(user => user.id =/= Number(id));
+//     await writeUsers(willUpdateUsers);
+
+//   }else{
+//     // RESPONSE
+//     response.
+//   }
+
+  
+// };
+
 
 /* Listening ---------------------------------------------------------------- */
 
