@@ -16,6 +16,10 @@
 // ✅ Express.js 앱의 미들웨어(Middleware) - greetingMessage.ts
 // ✅ GET 요청/응답 처리
 // ✅ https://www.typescriptlang.org/ko/docs/handbook/utility-types.html#picktype-keys
+// ✅ Node.js 함수(API)를 사용해 로컬 드라이브 파일 읽기 및 JS 객체 변환
+// ✅ Users 데이터 파일 읽기/쓰기 유틸리티 함수 작성 / 요청, 응답 처리
+// ✅ 동적 파라미터를 요청받아 서버에서 클라이언트로 응답 처리 과정
+// ✅ 
 // ✅ 
 // --------------------------------------------------------------------------
 
@@ -36,6 +40,12 @@ import greetingMessage from './middlewares/greetingMessage';
 import { request } from 'node:http';
 import { RequestUser } from './types/user';
 import { readFile,writeFile } from 'node:fs/promises';
+import { readUsers, writeUsers } from './lib/users';
+import { error } from 'node:console';
+
+
+
+
 
 /* CONFIG. ------------------------------------------------------------------ */
 
@@ -45,15 +55,36 @@ const HOSTNAME = 'localhost';
 const PORT = Number(process.env.PORT) ?? 4000;
 const MESSAGE = `웹 서버 구동 : http://${HOSTNAME}:${PORT}`;
 
+
+
+
+
+
+
+
+
 /* Application -------------------------------------------------------------- */
 
 const app: Express = express();
+
+
+
+
+
+
+
 
 /* Middleware --------------------------------------------------------------- */
 
 app.use(greetingMessage);
 app.use(express.static(resolve(__dirname, '../public')));
 app.use(express.json());
+
+
+
+
+
+
 
 /* Routing ------------------------------------------------------------------ */
 //
@@ -77,52 +108,148 @@ app.use(express.json());
 //   });
 // });
 
+
+
+
+
+
+
+
+
 /* Users API ---------------------------------------------------------------- */
 
-const dummyUser: User = {
-  id: 1,
-  name: '박하신',
-  gender: '여성',
-  age: 25,
-};
+// const dummyUser: User = {
+//   id: 1,
+//   name: '박하신',
+//   gender: '여성',
+//   age: 25,
+// };
 
-const dummyUserList: User[] = [dummyUser];
+// const dummyUserList: User[] = [dummyUser];
+
+
+
+
+
+
+
+
+
 
 // CREATE ----------------------------------------------------------------------
 
 // `POST /api/users`
-
-app.post('/api/users', 
+app.post(
+  '/api/users',
   async (request: Request<{}, {}, RequestUser>, response) => {
-  // 클라이언트 요청(JSON)
-  // console.log(request.body);
+    // 클라이언트 요청(JSON)
+    console.log(request.body);
 
-  // 서버에서 프로그래밍
-  const usersString = await readFile(resolve(__dirname, './data/user.json'),{
-    encoding:'utf-8'
-  });
 
-  const usersJSON : User[] = JSON.parse(usersString);
 
-  console.log(usersJSON);
+    // ⭐️서버에서 프로그래밍⭐️
 
-  // 클라이언트에 응답
-  response.status(201).json({});
+    // data/users.json 파일에 쓰기
+    // fsPromises.writeFile()
 
-  // 실패한 경우
+    // data/users.json 파일 읽기
+    // fsPromises.readFile() -> lib으로 분리
+    // 1. 데이터 파일 읽기
+    const users = await readUsers(); 
 
-});
+    // 새롭게 생성될 사용자(Users) 객체
+    const newId = users.length + 1;
+    // const newId = crypto.randomUUID(); //랜덤 아이디
+    const newUser : User = {
+      id: newId,
+      // name: request.body.name,
+      // gender: request.body.gender,
+      // age: request.body.age -> 구조분해할당
+      ...request.body,
+    }
+
+
+
+    // 2. 데이터 파일 쓰기
+    // 기존의 Users 배열에 새 유저를 추가
+ 
+    try {
+      // 클라이언트에 응답
+      // 성공한 경우
+      await writeUsers(newUser);
+      response.status(201).json(newUser);
+    } catch (error: unknown) {
+      // 실패한 경우
+      response.status(401).json({
+        message: '이런... 사용자 정보 생성에 실패했습니다.. 😭',
+      });
+    }
+  }
+);
+
+
+
+
+
 
 
 // READ ------------------------------------------------------------------------
 
 // `GET /api/users`
-app.get('/api/users', (request, response) => {
+app.get('/api/users', async (request, response) => {
   // Response (to Client)
-  response.status(200).json(dummyUserList);
+  // response.status(200).json(dummyUserList);
+
+  try {
+    const users = await readUsers();
+    // throw new Error('oops');
+
+    response.status(200).json(users);
+    
+  }catch (error: unknown){
+    response.status(500).json({
+      message: '알수없는 오류가 발생했습니다!...😎'
+    });
+  }
 });
 
+
+
+
+
+
+
 // `GET /api/users/:id`
+
+app.get('/api/users/:id', async(request, response) => {
+  // request params /:id
+  // console.log(request.params.id);
+
+  const { id } = request.params;
+
+  try{
+    const users = await readUsers();
+    
+    // 요청된 id 값과 일치하는 사용자가 존재하는지 검토
+    const requestUser = users.find(user => user.id === Number(id));
+    // console.log(requestUser);
+    if (requestUser) {
+      // 요청한 사용자 정보가 있을 경우
+      // response
+      response.status(200).json({requestUser});
+    } else {
+     // 요청한 사용자 정보가 없는 경우
+     response.status(500).json({
+      message: '알수없는 오류가 발생했습니다!...😎'
+     });
+    }
+    
+  } catch (error: unknown) {}
+
+
+
+})
+
 
 // UPDATE ---------------------------------------------------------------------
 
