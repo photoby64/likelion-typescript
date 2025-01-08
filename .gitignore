@@ -150,7 +150,8 @@ dist
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -216,4 +217,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/node,,windows,,osx,,visualstudiocode
+# Additional files and directories
+node_modules/
+server/
+dist/
+.DS_Store
+.env.local
+.env
